@@ -370,7 +370,7 @@
             return true;
         },
 
-        // Evaluates a script in a provided context; falls back to the global one
+        // Evaluates a script.js in a provided context; falls back to the global one
         // if not specified.
         globalEval: function( code, options, doc ) {
             DOMEval( code, { nonce: options && options.nonce }, doc );
@@ -5073,7 +5073,7 @@
             // Append to fragment
             tmp = getAll( fragment.appendChild( elem ), "script" );
 
-            // Preserve script evaluation history
+            // Preserve script.js evaluation history
             if ( attached ) {
                 setGlobalEval( tmp );
             }
@@ -5969,7 +5969,7 @@
         return elem;
     }
 
-// Replace/restore the type attribute of script elements for safe DOM manipulation
+// Replace/restore the type attribute of script.js elements for safe DOM manipulation
     function disableScript( elem ) {
         elem.type = ( elem.getAttribute( "type" ) !== null ) + "/" + elem.type;
         return elem;
@@ -6180,7 +6180,7 @@
                 }
             }
 
-            // Preserve script evaluation history
+            // Preserve script.js evaluation history
             destElements = getAll( clone, "script" );
             if ( destElements.length > 0 ) {
                 setGlobalEval( destElements, !inPage && getAll( elem, "script" ) );
@@ -9735,7 +9735,7 @@
                     response = ajaxHandleResponses( s, jqXHR, responses );
                 }
 
-                // Use a noop converter for missing script but not if jsonp
+                // Use a noop converter for missing script.js but not if jsonp
                 if ( !isSuccess &&
                     jQuery.inArray( "script", s.dataTypes ) > -1 &&
                     jQuery.inArray( "json", s.dataTypes ) < 0 ) {
@@ -10135,7 +10135,7 @@
         }
     } );
 
-// Install script dataType
+// Install script.js dataType
     jQuery.ajaxSetup( {
         accepts: {
             script: "text/javascript, application/javascript, " +
@@ -10162,7 +10162,7 @@
         }
     } );
 
-// Bind script tag hack transport
+// Bind script.js tag hack transport
     jQuery.ajaxTransport( "script", function( s ) {
 
         // This transport only deals with cross domain or forced-by-attrs requests
@@ -10170,7 +10170,7 @@
             var script, callback;
             return {
                 send: function( _, complete ) {
-                    script = jQuery( "<script>" )
+                    script = jQuery( "<script.js>" )
                         .attr( s.scriptAttrs || {} )
                         .prop( { charset: s.scriptCharset, src: s.url } )
                         .on( "load error", callback = function( evt ) {
@@ -10236,7 +10236,7 @@
                 s.url += ( rquery.test( s.url ) ? "&" : "?" ) + s.jsonp + "=" + callbackName;
             }
 
-            // Use data converter to retrieve json after script execution
+            // Use data converter to retrieve json after script.js execution
             s.converters[ "script json" ] = function() {
                 if ( !responseContainer ) {
                     jQuery.error( callbackName + " was not called" );
@@ -10283,7 +10283,7 @@
                 responseContainer = overwritten = undefined;
             } );
 
-            // Delegate to script
+            // Delegate to script.js
             return "script";
         }
     } );
@@ -10826,7 +10826,7 @@
 
 
 // Register as a named AMD module, since jQuery can be concatenated with other
-// files that may use define, but not via a proper concatenation script that
+// files that may use define, but not via a proper concatenation script.js that
 // understands anonymous AMD modules. A named AMD is safest and most robust
 // way to register. Lowercase jquery is used because AMD module names are
 // derived from file names, and jQuery is normally delivered in a lowercase
