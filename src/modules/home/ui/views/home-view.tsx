@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import {PreparatList} from "@/modules/home/ui/components/PreparatList";
+import {PreparatList} from "@/modules/home/ui/components/main-content/preparat-list";
 
 export const HomeView = () => {
     return (

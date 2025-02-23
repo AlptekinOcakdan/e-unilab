@@ -1,8 +1,9 @@
-import * as React from "react";
-import Link from "next/link";
+"use client";
+
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
+import {Fragment, useState} from "react";
+import {PreparatModal} from "@/modules/home/ui/components/main-content/preparat-modal";
 
 const preparatlar = [
     { id: "1", title: "Preparat 1" },
@@ -26,6 +27,14 @@ const preparatlar = [
 ];
 
 export const PreparatList = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false)
+    const [preparatId, setPreparatId] = useState("")
+    const [preparatName, setPreparatName] = useState("")
+    const handleClick = (id:string, name:string) => {
+        setIsModalOpen(true);
+        setPreparatId(id);
+        setPreparatName(name);
+    }
     return (
         <div className="flex-1 flex items-center flex-col px-8 py-4">
             <h2 className="text-2xl font-semibold">Preparatlar</h2>
@@ -34,17 +43,16 @@ export const PreparatList = () => {
             <ScrollArea className="w-96 rounded-md border">
                 <div className="h-96 p-2">
                     <div className="h-1"/>
-                    {preparatlar.map((prep) => (
-                        <>
-                            <Link href={`/preparat/${prep.id}`}>
-                                <Button asChild variant="outline" className="my-1 w-full">
-                                    <span className="text-sm">{prep.title}</span>
-                                </Button>
-                            </Link>
-                        </>
+                    {preparatlar.map((prep, index) => (
+                        <Fragment key={index}>
+                            <Button asChild variant="outline" className="my-1 w-full cursor-pointer" onClick={()=> handleClick(prep.id, prep.title)}>
+                                <span className="text-sm">{prep.title}</span>
+                            </Button>
+                        </Fragment>
                     ))}
                 </div>
             </ScrollArea>
+            {isModalOpen && <PreparatModal preparatId={preparatId} preparatName={preparatName} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>}
         </div>
     );
 };
